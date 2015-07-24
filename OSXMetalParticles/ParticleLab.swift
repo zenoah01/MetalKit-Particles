@@ -88,7 +88,8 @@ class ParticleLab: MTKView
         blankBitmapRawData = [UInt8](count: Int(imageWidth * imageHeight * 4), repeatedValue: 0)
         particlesMemoryByteSize = particleCount * sizeof(Particle)
         
-        super.init(frame: CGRect(x: 0, y: 0, width: Int(width), height: Int(height)))
+        let size = CGRect(x: 0, y: 0, width: Int(width), height: Int(height))
+        super.init(frame: size, device: MTLCreateSystemDefaultDevice())
         
         framebufferOnly = false
         colorPixelFormat = MTLPixelFormat.BGRA8Unorm
